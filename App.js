@@ -1,13 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import SignInScreen from './src/screens/SignInScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
+import HomeScreen from './src/screens/HomeScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer style={styles.container}>
+        <Stack.Navigator style={styles.container1}>
+            <Stack.Screen name="SignInScreen" component={SignInScreen} options={{title: 'RemoteUp - Sign in', headerShown: false}} />
+            <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{title: ''}} />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} options={{title: '', headerShown: false}} />
+        </Stack.Navigator>
+    </NavigationContainer>
+    
   );
 }
 
