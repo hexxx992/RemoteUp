@@ -5,7 +5,7 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 const ContinueAsGuest = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
                 <Text style={styles.text} >Continue as guest</Text>
             </TouchableOpacity>
             
@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         flexDirection: 'row',
         alignSelf: 'center',
-        marginTop: '10%'
+        marginTop: '5%'
     }, 
     text: {
         color: '#223fd4',
-        fontSize: 15,
+        fontSize: 16,
     }
 })
 

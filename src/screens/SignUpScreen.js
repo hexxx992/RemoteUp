@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView} from 'react-native';
 import Form from '../components/Form';
 import * as Yup from 'yup';
 import firebase from '../firebase';
@@ -40,7 +40,7 @@ const SignUpScreen = ({navigation}) => {
   }
 
   return (
-    <SafeAreaView>
+    <ScrollView contentContainerStyle={styles.container}>
       <SafeAreaView style={styles.form}>
         <Form
           initialValues={{
@@ -89,12 +89,16 @@ const SignUpScreen = ({navigation}) => {
           {<Form.ErrorMessage error={signInError} visible={true} />}
         </Form>
       </SafeAreaView>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#e0e0e0',
+    height: '100%'
+  },
   form: {
     width: '85%',
     alignItems: 'center',

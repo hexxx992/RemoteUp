@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
         marginTop: '5%'
     }, 
     text: {
-        fontSize : 15,
+        fontSize : 16,
     },
     signUpText: {
         color: '#223fd4',
-        fontSize: 15,
+        fontSize: 16,
     }
 })
 

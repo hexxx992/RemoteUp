@@ -9,12 +9,20 @@ import HomeScreen from './src/screens/HomeScreen';
 const Stack = createStackNavigator();
 
 export default function App() {
+  // const [auth, setAuth] = useState();
+
+  // useEffect(() => {
+  //     firebase.auth().onAuthStateChanged((auth) => {
+  //       setAuth(auth);
+  //     });
+  //   }, []);
+  
   return (
     <NavigationContainer style={styles.container}>
         <Stack.Navigator style={styles.container1}>
-            <Stack.Screen name="SignInScreen" component={SignInScreen} options={{title: 'RemoteUp - Sign in', headerShown: false}} />
+            <Stack.Screen name="SignInScreen" component={SignInScreen} options={{title: 'Sign in - RemoteUp', headerShown: false}} />
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{title: ''}} />
-            <Stack.Screen name="HomeScreen" component={HomeScreen} options={{title: '', headerShown: false}} />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} options={{title: 'Home - RemoteUp', headerShown: false}} />
         </Stack.Navigator>
     </NavigationContainer>
     

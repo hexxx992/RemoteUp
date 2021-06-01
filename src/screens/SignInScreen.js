@@ -37,7 +37,7 @@ const SignInScreen = ({navigation}) => {
   }
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.container}>
       <Header />
       <SafeAreaView style={styles.form}>
         <Form
@@ -76,6 +76,10 @@ const SignInScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#e0e0e0',
+    height: '100%'
+  },
   form: {
     width: '85%',
     alignItems: 'center',
