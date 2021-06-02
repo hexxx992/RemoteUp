@@ -2,7 +2,7 @@ import React, {useState, useCallback, useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 
-const PublicChatBox = ({setTalkingTo, setTalkingToImage}) => {
+const PublicChatBox = ({setTalkingTo}) => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -64,7 +64,6 @@ const PublicChatBox = ({setTalkingTo, setTalkingToImage}) => {
 
   const onChoose = (props) => {
     setTalkingTo(props);
-    setTalkingToImage(props.avatar);
   }
 
   return (

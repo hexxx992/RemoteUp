@@ -60,7 +60,8 @@ const PrivateChatBox = ({talkingTo}) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    borderRadius: 20
+    borderRadius: 20,
+    height: '100%'
   }
 })
 

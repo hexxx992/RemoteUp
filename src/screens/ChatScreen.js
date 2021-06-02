@@ -3,7 +3,6 @@ import {Image, SafeAreaView, StyleSheet, View, Text, TouchableOpacity, SectionLi
 import Modal from "modal-enhanced-react-native-web";
 import PublicChatBox from '../components/PublicChatBox';
 import PrivateChatBox from '../components/PrivateChatBox';
-import { useEffect } from 'react/cjs/react.development';
 import AddfriendButton from '../components/AddFriendButton';
 import LeaveChatButton from '../components/LeaveChatButton';
 import ChatButton from '../components/ChatButton';
@@ -13,7 +12,6 @@ const ChatScreen = () => {
     const [matching, setMatching] = useState(false);
     const [leaving, setLeaving] = useState(false);
     const [talkingTo, setTalkingTo] = useState();
-    const [talkingToImage, setTalkingToImage] = useState();
 
     return (
         <SafeAreaView style={styles.container}>
@@ -23,14 +21,16 @@ const ChatScreen = () => {
                     <View style={styles.chatHeader}>
                         <LeaveChatButton setChatting={setChatting} setLeaving={setLeaving}></LeaveChatButton>
                     </View>
-                    <PublicChatBox setTalkingTo={setTalkingTo} setTalkingToImage={setTalkingToImage}></PublicChatBox>
+                    <PublicChatBox setTalkingTo={setTalkingTo}></PublicChatBox>
                 </View>
                 <View style={styles.privateChatBox}>
                     <View style={styles.talkingTo}>
-                        <Image source={talkingToImage} style={styles.imageTalkingTo}></Image>
+                        <Image source={talkingTo?.avatar} style={styles.imageTalkingTo}></Image>
                         {talkingTo? <AddfriendButton></AddfriendButton>: undefined}
                     </View>
-                    <PrivateChatBox talkingTo={talkingTo}></PrivateChatBox>
+                    <View style={styles.privateChatBottomWrapper}>
+                        <PrivateChatBox style={styles.privateChatBottom} talkingTo={talkingTo}></PrivateChatBox>
+                    </View>
                 </View>
             </View> : undefined}
             <Modal
@@ -76,26 +76,35 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     talkingTo: {
-        height: '20%',
+        height: '19%',
+        width: '100%',
         backgroundColor: '#dbab84',
         justifyContent: 'center',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         flexDirection: 'row'
+    },
+    privateChatBottomWrapper: {
+        height: '80%',
+        width: '100%',
+        backgroundColor: '#dbab84',
+        flexDirection: 'row'
+    },
+    privateChatBottom: {
+        height: '100%',
+        width: '100%',
     },
     chatHeader: {
         height: '10%',
         width: '100%'
     },
-
-
     matchingText: {
         fontSize: 28
     },
     imageTalkingTo: {
         height: 140,
         width: 140,
-        marginTop: 20,
-        borderRadius: 140/2
+        margin: 20,
+        borderRadius: 140/2,
     },
     chat: {
         backgroundColor: '#e0e0e0',
@@ -109,9 +118,10 @@ const styles = StyleSheet.create({
         width: '74.5%',
     },
     privateChatBox: {
-        backgroundColor: '#dbab84',
         width: '25%',
+        height: '100%',
         flexDirection: 'column',
+        justifyContent: 'space-around'
     },
     modalContent: {
         backgroundColor: "white",
