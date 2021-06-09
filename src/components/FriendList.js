@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {Text, FlatList, StyleSheet, View} from 'react-native';
 import Friend from './Friend';
 
 const FriendList = ({setShowing, setTalkingTo}) => {
@@ -22,21 +22,43 @@ const FriendList = ({setShowing, setTalkingTo}) => {
     ]);
 
     return (
-        <FlatList
-            contentContainerStyle={styles.friendList}
-            data={friends}
-            keyExtractor={ item => item._id.toString() }
-            renderItem={({item}) => (
-                <Friend item={item} setShowing={setShowing} setTalkingTo={setTalkingTo}></Friend>
-            )}
-        />
+        <View style={styles.container}>
+            <FlatList
+                contentContainerStyle={styles.friendList}
+                data={friends}
+                keyExtractor={ item => item._id.toString() }
+                renderItem={({item}) => (
+                    <Friend item={item} setShowing={setShowing} setTalkingTo={setTalkingTo}></Friend>
+                )}
+            />
+            <View style={styles.tipContainer}>
+                <Text style={styles.tip}>Long press a friend to see details</Text>    
+            </View>
+            
+        </View>
+        
     );
 }
 
 const styles = StyleSheet.create({
-    friendList: {
+    container: {
         height: '100%',
         width: '100%',
+        flexDirection: 'column',
+    },
+    friendList: {
+        height: '90%',
+        width: '100%',
+    },
+    tipContainer: {
+        height: '10%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    tip: {
+        fontSize: 20,
+        color: 'red',
     }
 })
 

@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {Image, SafeAreaView, StyleSheet, View, Text, TouchableOpacity, SectionList} from 'react-native';
+import {Image, SafeAreaView, StyleSheet, View, Text} from 'react-native';
 import Modal from "modal-enhanced-react-native-web";
 import PublicChatBox from '../components/PublicChatBox';
 import PrivateChatBox from '../components/PrivateChatBox';
 import AddfriendButton from '../components/AddFriendButton';
 import LeaveChatButton from '../components/LeaveChatButton';
 import ChatButton from '../components/ChatButton';
+import SettingButton from '../components/SettingButton';
 
 const ChatScreen = () => {
     const [chatting, setChatting] = useState(false);
@@ -15,24 +16,26 @@ const ChatScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            {chatting? undefined : <ChatButton setMatching={setMatching} setChatting={setChatting}></ChatButton>}
-            {chatting?<View style={styles.chat}>
-                <View style={styles.publicChatBox}>
-                    <View style={styles.chatHeader}>
-                        <LeaveChatButton setChatting={setChatting} setLeaving={setLeaving}></LeaveChatButton>
+            <View style={styles.chatContainer}>
+                {chatting? undefined : <ChatButton setMatching={setMatching} setChatting={setChatting}></ChatButton>}
+                {chatting?<View style={styles.chat}>
+                    <View style={styles.publicChatBox}>
+                        <View style={styles.chatHeader}>
+                            <LeaveChatButton setChatting={setChatting} setLeaving={setLeaving}></LeaveChatButton>
+                        </View>
+                        <PublicChatBox setTalkingTo={setTalkingTo}></PublicChatBox>
                     </View>
-                    <PublicChatBox setTalkingTo={setTalkingTo}></PublicChatBox>
-                </View>
-                <View style={styles.privateChatBox}>
-                    <View style={styles.talkingTo}>
-                        <Image source={talkingTo?.avatar} style={styles.imageTalkingTo}></Image>
-                        {talkingTo? <AddfriendButton></AddfriendButton>: undefined}
+                    <View style={styles.privateChatBox}>
+                        <View style={styles.talkingTo}>
+                            <Image source={talkingTo?.avatar} style={styles.imageTalkingTo}></Image>
+                            {talkingTo? <AddfriendButton></AddfriendButton>: undefined}
+                        </View>
+                        <View style={styles.privateChatBottomWrapper}>
+                            <PrivateChatBox style={styles.privateChatBottom} talkingTo={talkingTo}></PrivateChatBox>
+                        </View>
                     </View>
-                    <View style={styles.privateChatBottomWrapper}>
-                        <PrivateChatBox style={styles.privateChatBottom} talkingTo={talkingTo}></PrivateChatBox>
-                    </View>
-                </View>
-            </View> : undefined}
+                </View> : undefined}
+            </View>
             <Modal
                 isVisible={matching}
                 backdropColor="#21518C"
@@ -69,6 +72,9 @@ const ChatScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
+        height: '100%'
+    },
+    chatContainer: {
         flexDirection: 'column',
         backgroundColor: '#e0e0e0',
         alignItems: 'center',
@@ -133,6 +139,11 @@ const styles = StyleSheet.create({
         width: '50%',
         borderColor: "rgba(0, 0, 0, 0.1)"
     },
+    settingButton: {
+        position: 'absolute',
+        right: 20,
+        bottom: 20
+    }
 });
 
 export default ChatScreen;

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {Image, SafeAreaView, StyleSheet, View, Text, TouchableOpacity, SectionList} from 'react-native';
+import {Image, SafeAreaView, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import FriendChatBox from '../components/FriendChatBox';
 import FriendList from '../components/FriendList';
 import Modal from "modal-enhanced-react-native-web";
 
-const ChatScreen = () => {
+const FriendsScreen = () => {
     const [talkingTo, setTalkingTo] = useState();
     const [showing, setShowing] = useState(false);
 
@@ -124,4 +124,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ChatScreen;
+export default FriendsScreen;
