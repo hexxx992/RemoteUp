@@ -14,7 +14,7 @@ const FriendsScreen = () => {
             <Text>{text}</Text>
           </View>
         </TouchableOpacity>
-      );
+    );
 
     return (
         <SafeAreaView style={styles.container}>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Image, SafeAreaView, StyleSheet, View, Text} from 'react-native';
 import Modal from "modal-enhanced-react-native-web";
 import PublicChatBox from '../components/PublicChatBox';
@@ -6,13 +6,14 @@ import PrivateChatBox from '../components/PrivateChatBox';
 import AddfriendButton from '../components/AddFriendButton';
 import LeaveChatButton from '../components/LeaveChatButton';
 import ChatButton from '../components/ChatButton';
-import SettingButton from '../components/SettingButton';
+import ModeContext from '../components/ModeContext';
 
 const ChatScreen = () => {
     const [chatting, setChatting] = useState(false);
     const [matching, setMatching] = useState(false);
     const [leaving, setLeaving] = useState(false);
     const [talkingTo, setTalkingTo] = useState();
+    const mode = useContext(ModeContext);
 
     return (
         <SafeAreaView style={styles.container}>

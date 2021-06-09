@@ -34,7 +34,6 @@ const FriendList = ({setShowing, setTalkingTo}) => {
             <View style={styles.tipContainer}>
                 <Text style={styles.tip}>Long press a friend to see details</Text>    
             </View>
-            
         </View>
         
     );

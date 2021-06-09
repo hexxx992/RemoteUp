@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import Setting from './Setting';
 
-const SettingList = () => {
+const SettingList = ({setCurSetting}) => {
     const [settings, setSettings] = useState([
         {
             title: "Profile",
@@ -12,7 +12,7 @@ const SettingList = () => {
             title: "Dark Mode",
             icon: "moon"
         }
-    ])
+    ]);
 
     return (
         <FlatList
@@ -20,7 +20,7 @@ const SettingList = () => {
             data={settings}
             keyExtractor={ item => item.title}
             renderItem={({item}) => (
-                <Setting item={item}></Setting>
+                <Setting item={item} setCurSetting={setCurSetting}></Setting>
             )}
         />
     );

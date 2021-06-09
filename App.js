@@ -19,7 +19,7 @@ export default function App() {
   
   return (
     <NavigationContainer style={styles.container}>
-        <Stack.Navigator style={styles.container1}>
+        <Stack.Navigator>
             <Stack.Screen name="SignInScreen" component={SignInScreen} options={{title: 'Sign in - RemoteUp', headerShown: false}} />
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{title: ''}} />
             <Stack.Screen name="HomeScreen" component={HomeScreen} options={{title: 'Home - RemoteUp', headerShown: false}} />

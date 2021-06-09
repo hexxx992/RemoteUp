@@ -2,9 +2,9 @@ import React from 'react';
 import {TouchableOpacity, StyleSheet, Text} from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; 
 
-const Setting = ({item}) => { 
+const Setting = ({item, setCurSetting}) => { 
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => setCurSetting(item.title)}>
             <Ionicons name={item.icon} size={26} color="black"/>
             <Text style={styles.title}>{item.title}</Text>
         </TouchableOpacity>
